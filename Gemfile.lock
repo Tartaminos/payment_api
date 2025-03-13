@@ -140,9 +140,13 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.3-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.18.3-aarch64-linux-gnu)
+      racc (~> 1.4)
     nokogiri (1.18.3-aarch64-linux-musl)
       racc (~> 1.4)
     nokogiri (1.18.3-arm-linux)
+      racc (~> 1.4)
+    nokogiri (1.18.3-arm-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.18.3-arm-linux-musl)
       racc (~> 1.4)
@@ -151,6 +155,8 @@ GEM
     nokogiri (1.18.3-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.3-x86_64-linux)
+      racc (~> 1.4)
+    nokogiri (1.18.3-x86_64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.18.3-x86_64-linux-musl)
       racc (~> 1.4)
@@ -298,13 +304,16 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  aarch64-linux-gnu
   aarch64-linux-musl
   arm-linux
+  arm-linux-gnu
   arm-linux-musl
   arm64-darwin
   ruby
   x86_64-darwin
   x86_64-linux
+  x86_64-linux-gnu
   x86_64-linux-musl
 
 DEPENDENCIES
