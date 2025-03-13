@@ -1,0 +1,11 @@
+:concurrency: 5
+:queues:
+  - receivable_liquidation
+  - default
+
+:scheduler:
+  :schedule:
+    receivable_liquidation:
+      cron: "0 0 * * *"
+      class: ReceivableLiquidationWorker
+      queue: receivable_liquidation

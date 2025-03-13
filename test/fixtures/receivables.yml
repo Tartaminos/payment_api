@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payment_transaction: one
+  installment: 1
+  schedule_date: 2025-03-11
+  liquidation_date: 2025-03-11
+  status: MyString
+  amount_to_settle: 9.99
+  amount_settled: 9.99
+
+two:
+  payment_transaction: two
+  installment: 1
+  schedule_date: 2025-03-11
+  liquidation_date: 2025-03-11
+  status: MyString
+  amount_to_settle: 9.99
+  amount_settled: 9.99
