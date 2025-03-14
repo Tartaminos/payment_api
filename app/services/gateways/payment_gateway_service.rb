@@ -18,7 +18,8 @@ module Gateways
         end
 
         def approve_transaction()
-            @payment_transaction.update!(status: 'aprovado')
+            payment_transaction_service = Payments::PaymentTransactionService.new()
+            payment_transaction_service.update_transaction({status: 'aprovado'}, @payment_transaction)
       
             repassed_amount = retention_calc(@payment_transaction)
 
@@ -30,7 +31,9 @@ module Gateways
         end
 
         def reject_transaction()
-            @payment_transaction.update!(status: 'reprovado')
+            payment_transaction_service = Payments::PaymentTransactionService.new()
+            payment_transaction_service.update_transaction({status: 'reprovado'}, @payment_transaction)
+
             { success: false, message: "Transação reprovada: número de parcelas ímpar." }
         end
 

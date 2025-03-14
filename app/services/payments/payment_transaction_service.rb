@@ -16,5 +16,9 @@ module Payments
             PaymentTransaction.load_transaction_by_date_range(start_date, end_date)
         end
 
+        def update_transaction(params, payment_transaction)
+            PaymentTransaction.update_transaction(params, payment_transaction)
+        end
+
     end
 end

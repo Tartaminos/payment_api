@@ -11,4 +11,12 @@ class PaymentTransaction < ApplicationRecord
         PaymentTransaction.where(created_at: start_date.beginning_of_day..end_date.end_of_day)
     end
 
+    def self.create_transaction(params)
+        PaymentTransaction.new(params)
+    end
+
+    def self.update_transaction(params, payment_transaction)
+        payment_transaction.update!(params)
+    end
+
 end
