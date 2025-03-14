@@ -14,7 +14,7 @@ gem 'redis', '~> 5.4'
 gem 'sidekiq', '~> 7.0'
 gem 'sidekiq-scheduler'
 
-gem 'nokogiri', '~> 1.18', '>= 1.18.3'
+gem 'nokogiri', '~> 1.18'
 
 # data migrate looks greate to implement and maintaing installment fees 
 gem 'data_migrate'
