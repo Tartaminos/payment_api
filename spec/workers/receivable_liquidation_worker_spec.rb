@@ -20,7 +20,6 @@ RSpec.describe ReceivableLiquidationWorker, type: :worker do
       allow(Receivables::LiquidationService).to receive(:new).and_return(liquidation_service)
       allow(liquidation_service).to receive(:liquidate)
 
-      # Executa o job diretamente
       described_class.new.perform
 
       expect(liquidation_service).to have_received(:liquidate).with(Date.current)

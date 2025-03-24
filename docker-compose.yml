@@ -17,6 +17,16 @@ services:
       DATABASE_NAME: payment_api_development
       REDIS_URL: redis://redis:6379/0
 
+  test:
+    build: .
+    container_name: rspec_tests
+    command: bash -c "bundle exec rspec --force-color"
+    environment:
+      - RAILS_ENV=test
+    volumes:
+      - .:/app
+    depends_on:
+      - db
   sidekiq:
     build: .
     container_name: sidekiq

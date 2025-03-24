@@ -16,7 +16,7 @@ RSpec.describe Gateways::PaymentGatewayService, type: :service do
         allow(transaction_approval_service).to receive(:is_rejected).with(payment_transaction).and_return(true)
 
         expect(service).to receive(:reject_transaction).and_call_original
-        allow(payment_transaction).to receive(:update!).with(status: 'reprovado')
+        allow(payment_transaction).to receive(:update!).with({ status: 'reprovado' })
 
         result = service.process_transaction(payment_transaction)
 
@@ -30,7 +30,7 @@ RSpec.describe Gateways::PaymentGatewayService, type: :service do
         allow(transaction_approval_service).to receive(:is_rejected).with(payment_transaction).and_return(false)
 
         expect(service).to receive(:approve_transaction).and_call_original
-        allow(payment_transaction).to receive(:update!).with(status: 'aprovado')
+        allow(payment_transaction).to receive(:update!).with({ status: 'aprovado' })
 
         allow(service).to receive(:retention_calc).and_return(95.0)
         allow(service).to receive(:amount_per_receivable_calc).and_return(47.5)
@@ -46,7 +46,7 @@ RSpec.describe Gateways::PaymentGatewayService, type: :service do
 
   describe '#approve_transaction' do
     before do
-      allow(payment_transaction).to receive(:update!).with(status: 'aprovado')
+      allow(payment_transaction).to receive(:update!).with({ status: 'aprovado' })
       allow(service).to receive(:retention_calc).and_return(95.0)
       allow(service).to receive(:amount_per_receivable_calc).and_return(47.5)
       allow(service).to receive(:schedule_receivable)
@@ -62,7 +62,7 @@ RSpec.describe Gateways::PaymentGatewayService, type: :service do
 
   describe '#reject_transaction' do
     it 'atualiza o status para reprovado e retorna a mensagem de rejeição' do
-      allow(payment_transaction).to receive(:update!).with(status: 'reprovado')
+      allow(payment_transaction).to receive(:update!).with({ status: 'reprovado' })
 
       result = service.reject_transaction
 
