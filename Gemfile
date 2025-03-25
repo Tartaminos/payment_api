@@ -42,7 +42,7 @@ group :development, :test do
   
   gem "debug", platforms: %i[ mingw mswin x64_mingw jruby ], require: "debug/prelude"
 
-  gem 'rspec-rails', '~> 7.0.0'
+  gem 'rspec-rails', '~> 7.1.1'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
