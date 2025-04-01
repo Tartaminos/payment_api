@@ -109,4 +109,27 @@ RSpec.describe PaymentTransaction, type: :model do
       expect(results).to be_empty
     end
   end
+
+  describe '.create_transaction' do 
+    let(:transaction_params) do
+      {
+        amount: 100.0,
+        installment: 3,
+        payment_method: 'elo'
+      }
+    end
+
+    it 'cria uma nova PaymentTransaction com os parâmetros fornecidos' do
+      payment_transaction = described_class.create_transaction(transaction_params)
+
+      expect(payment_transaction).to be_a(PaymentTransaction)
+
+      expect(payment_transaction.amount).to eq(100.0)
+      expect(payment_transaction.installment).to eq(3)
+      expect(payment_transaction.payment_method).to eq('elo')
+
+      expect(payment_transaction).to_not be_persisted
+    end
+
+  end
 end

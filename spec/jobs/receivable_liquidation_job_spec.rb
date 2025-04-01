@@ -1,16 +1,22 @@
 require 'rails_helper'
-require 'sidekiq/testing'
 
-Sidekiq::Testing.fake!
+RSpec.describe ReceivableLiquidationJob, type: :job do
+  include ActiveJob::TestHelper
 
-RSpec.describe ReceivableLiquidationWorker, type: :worker do
-  it { is_expected.to be_processed_in :receivable_liquidation }
+  before do
+    clear_enqueued_jobs
+    clear_performed_jobs
+  end
+
+  it 'usa a fila correta' do
+    expect(described_class.queue_name).to eq('receivable_liquidation')
+  end
 
   describe 'Job enqueuing' do
-    it 'enfileira o job sem argumentos' do
+    it 'enfileira o job' do
       expect {
-        described_class.perform_async
-      }.to change(described_class.jobs, :size).by(1)
+        described_class.perform_later
+      }.to have_enqueued_job(described_class).on_queue('receivable_liquidation')
     end
   end
 
@@ -20,7 +26,7 @@ RSpec.describe ReceivableLiquidationWorker, type: :worker do
       allow(Receivables::LiquidationService).to receive(:new).and_return(liquidation_service)
       allow(liquidation_service).to receive(:liquidate)
 
-      described_class.new.perform
+      described_class.perform_now
 
       expect(liquidation_service).to have_received(:liquidate).with(Date.current)
     end

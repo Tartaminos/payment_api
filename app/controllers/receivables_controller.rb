@@ -23,12 +23,5 @@ class ReceivablesController < ApplicationController
 			]
 		), status: :ok
 	end
-
-	private
-
-	def load_approved_receivables()
-		Receivable::ReceivablesService.new().load_approved_receivables
-	end
-
 end
   

@@ -163,6 +163,6 @@ Um job (via **sidekiq-scheduler**) liquida os receb√≠veis cujo `schedule_date` √
   :schedule:
     receivable_liquidation:
       cron: "0 0 * * *"
-      class: ReceivableLiquidationWorker
+      class: ReceivableLiquidationJob
       queue: receivable_liquidation
 ```

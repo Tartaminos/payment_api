@@ -7,7 +7,7 @@ RSpec.describe Receivables::ReceivableSchedulerService, type: :service do
     subject(:service) { described_class.new }
 
     it 'envia para a fila de execução do ReceivableGeneratorWorker com os argumentos corretos' do
-      expect(ReceivableGeneratorWorker).to receive(:perform_async).with(transaction.id, amount_per_receivable.to_f)
+      expect(ReceivableGeneratorJob).to receive(:perform_later).with(transaction.id, amount_per_receivable.to_f)
       service.schedule(transaction, amount_per_receivable)
     end
   end
